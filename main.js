@@ -52,6 +52,7 @@ kadai_3(25, message);
 kadai_3(13, message);
 kadai_3(9, message);
 kadai_3('aaa', message);
+kadai_3(true, message); // １０未満の数値として判定されてしまう
 
 // 課題4: 以下の条件を満たす即時関数を作る
 //   - 2つの引数を受け取る
