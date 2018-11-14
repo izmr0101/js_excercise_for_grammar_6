@@ -32,27 +32,56 @@
 //           - 第1引数で受けとった `message` の内容を `alert` を使ってアラートダイアログに表示する
 //   - kadai_3関数を実装した直後に「kadai_3(数値, コールバック関数)」を呼び出して、アラートダイアログのメッセージ内容が意図通りであることを確認する
 
+
 function kadai_3(age, callback) {
+    let message;
+    if (typeof age !== 'number') {
+        message = '数値が入力されていません';
+    } else if (age >= 20) {
+        message = '値は２０以上です';
+    } else if (age >= 10) {
+        message = '値は１０以上２０未満です';
+    } else {
+        message = '値は１０未満です';
+    }
+
+    callback(message);
+}
+
+function alert1(message) {
+    alert(message);
+}
+
+
+kadai_3(25, alert1);
+kadai_3(13, alert1);
+kadai_3(9, alert1);
+kadai_3('aaa', alert1);
+kadai_3(true, alert1);
+
+// 以下コメント指示に従っていない回答
+
+function kadai_3_1(age, callback) {
     callback(age);
 }
 
-function message(age) {
-    if (age >= 20) {
+function message1(age) {
+    if (typeof age !== 'number') {
+        alert('数値が入力されていません');
+    } else if (age >= 20) {
         alert('値は２０以上です');
     } else if (age >= 10) {
         alert('値は１０以上２０未満です');
-    } else if (age < 10) {
-        alert('値は１０未満です');
     } else {
-        alert('数値が入力されていません');
+        alert('値は１０未満です');
     }
 }
 
-kadai_3(25, message);
-kadai_3(13, message);
-kadai_3(9, message);
-kadai_3('aaa', message);
-kadai_3(true, message); // １０未満の数値として判定されてしまう
+kadai_3_1(25, message1);
+kadai_3_1(13, message1);
+kadai_3_1(9, message1);
+kadai_3_1('aaa', message1);
+kadai_3_1(true, message1);
 
 // 課題4: 以下の条件を満たす即時関数を作る
 //   - 2つの引数を受け取る
@@ -62,5 +91,6 @@ kadai_3(true, message); // １０未満の数値として判定されてしま�
 //     - 第1引数のx, 第2引数のyを使って足し算した結果(「x + y」の結果)をconsole.logで出力する。
 
 ((x, y) => {
-    console.log('課題4の結果:' + x + y);
+    let num = x + y;
+    console.log('課題4の結果:' + num);
 })(3, 5);
